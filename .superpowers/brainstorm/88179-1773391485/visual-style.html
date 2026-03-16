@@ -1,0 +1,91 @@
+<h2>你喜歡哪種視覺風格？</h2>
+<p class="subtitle">點選你偏好的風格方向</p>
+
+<div class="cards">
+  <!-- Option A: Clean Minimal -->
+  <div class="card" data-choice="minimal" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 20px; background: #fafafa;">
+      <div style="font-family: sans-serif; max-width: 320px; margin: 0 auto;">
+        <div style="border-bottom: 2px solid #333; padding-bottom: 8px; margin-bottom: 12px;">
+          <span style="font-size: 18px; font-weight: bold;">第1課</span>
+          <span style="color: #888; margin-left: 8px;">わたしは マイク・ミラーです</span>
+        </div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 6px 0; font-size: 16px;">わたし</td>
+            <td style="padding: 6px 0; color: #666;">我</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 6px 0; font-size: 16px;">あなた</td>
+            <td style="padding: 6px 0; color: #666;">你</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 6px 0; font-size: 16px;">せんせい</td>
+            <td style="padding: 6px 0; color: #666;">老師</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 簡約乾淨</h3>
+      <p>黑白為主，表格式排列，像整理好的筆記</p>
+    </div>
+  </div>
+
+  <!-- Option B: Colorful Cards -->
+  <div class="card" data-choice="colorful" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 20px; background: #f0f7ff;">
+      <div style="font-family: sans-serif; max-width: 320px; margin: 0 auto;">
+        <div style="background: #4A90D9; color: white; padding: 10px 14px; border-radius: 8px 8px 0 0; font-weight: bold;">
+          📘 第1課 わたしは マイク・ミラーです
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 0;">
+          <div style="background: white; border: 1px solid #dce8f5; border-radius: 8px; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+            <div style="font-size: 16px; font-weight: bold; color: #333;">わたし</div>
+            <div style="font-size: 12px; color: #4A90D9;">我</div>
+          </div>
+          <div style="background: white; border: 1px solid #dce8f5; border-radius: 8px; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+            <div style="font-size: 16px; font-weight: bold; color: #333;">あなた</div>
+            <div style="font-size: 12px; color: #4A90D9;">你</div>
+          </div>
+          <div style="background: white; border: 1px solid #dce8f5; border-radius: 8px; padding: 10px 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+            <div style="font-size: 16px; font-weight: bold; color: #333;">せんせい</div>
+            <div style="font-size: 12px; color: #4A90D9;">老師</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 彩色卡片</h3>
+      <p>每課一個顏色，單字用卡片呈現，活潑好辨識</p>
+    </div>
+  </div>
+
+  <!-- Option C: Japanese Textbook Style -->
+  <div class="card" data-choice="japanese" onclick="toggleSelect(this)">
+    <div class="card-image" style="padding: 20px; background: #fdf8f0;">
+      <div style="font-family: sans-serif; max-width: 320px; margin: 0 auto;">
+        <div style="border-left: 4px solid #c0392b; padding-left: 12px; margin-bottom: 14px;">
+          <div style="font-size: 12px; color: #c0392b; font-weight: bold;">だい１か</div>
+          <div style="font-size: 16px; font-weight: bold; color: #333;">わたしは マイク・ミラーです</div>
+        </div>
+        <div style="margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; padding: 6px 0; border-bottom: 1px dotted #ddd;">
+            <span style="font-size: 18px; min-width: 80px;">わたし</span>
+            <span style="background: #fef3e8; padding: 2px 8px; border-radius: 4px; font-size: 13px; color: #8b5e3c;">名詞</span>
+            <span style="margin-left: auto; color: #666; font-size: 14px;">我</span>
+          </div>
+          <div style="display: flex; align-items: center; padding: 6px 0; border-bottom: 1px dotted #ddd;">
+            <span style="font-size: 18px; min-width: 80px;">あなた</span>
+            <span style="background: #fef3e8; padding: 2px 8px; border-radius: 4px; font-size: 13px; color: #8b5e3c;">名詞</span>
+            <span style="margin-left: auto; color: #666; font-size: 14px;">你</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 教科書風格</h3>
+      <p>仿日本教材排版，帶詞性標記，學術感強</p>
+    </div>
+  </div>
+</div>

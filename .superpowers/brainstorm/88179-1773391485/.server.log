@@ -1,0 +1,5 @@
+{"type":"server-started","port":61451,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:61451","screen_dir":"/Users/kai/Desktop/minna-no-nihongo/.superpowers/brainstorm/88179-1773391485"}
+{"type":"screen-added","file":"/Users/kai/Desktop/minna-no-nihongo/.superpowers/brainstorm/88179-1773391485/visual-style.html"}
+{"source":"user-event","type":"click","text":"だい１か\n          わたしは マイク・ミラーです\n        \n        \n          \n            わたし\n            名詞\n            我\n          \n          \n            あなた\n            名詞\n            你\n          \n        \n      \n    \n    \n      C. 教科書風格\n      仿日本教材排版，帶詞性標記，學術感強","choice":"japanese","id":null,"timestamp":1773391647275}
+{"type":"screen-added","file":"/Users/kai/Desktop/minna-no-nihongo/.superpowers/brainstorm/88179-1773391485/layout-mockup.html"}
+{"type":"server-stopped","reason":"idle timeout"}
