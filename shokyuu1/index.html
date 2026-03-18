@@ -297,6 +297,234 @@ mark {
 @media (min-width: 769px) {
   .menu-toggle { display: none; }
 }
+
+/* === Flashcard Practice === */
+.practice-btn-wrapper {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.practice-btn {
+  padding: 8px 20px;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.practice-btn:hover { background: #a93226; }
+.practice-last-score {
+  font-size: 12px;
+  color: #888;
+}
+
+.practice-area {
+  display: none;
+  margin-bottom: 24px;
+}
+.practice-area.active { display: block; }
+
+.practice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.practice-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.practice-header-left .practice-label {
+  font-size: 13px;
+  color: #c0392b;
+  font-weight: bold;
+}
+.practice-header-left .practice-direction {
+  font-size: 12px;
+  color: #888;
+}
+.practice-header-right {
+  display: flex;
+  gap: 8px;
+}
+.practice-header-right button {
+  padding: 4px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.practice-switch-btn {
+  border: 1px solid #c0392b;
+  background: transparent;
+  color: #c0392b;
+}
+.practice-switch-btn:hover { background: #c0392b; color: white; }
+.practice-end-btn {
+  border: 1px solid #999;
+  background: transparent;
+  color: #666;
+}
+.practice-end-btn:hover { background: #999; color: white; }
+
+.practice-progress {
+  margin-bottom: 20px;
+}
+.practice-progress-bar {
+  background: #e8ddd0;
+  border-radius: 10px;
+  height: 6px;
+  overflow: hidden;
+}
+.practice-progress-fill {
+  height: 100%;
+  background: #c0392b;
+  border-radius: 10px;
+  transition: width 0.3s;
+}
+.practice-progress-text {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  margin-top: 6px;
+}
+
+.flashcard {
+  background: white;
+  border: 2px solid #e8ddd0;
+  border-radius: 12px;
+  padding: 48px 32px;
+  text-align: center;
+  margin: 0 auto 20px;
+  max-width: 400px;
+  cursor: pointer;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.2s;
+  user-select: none;
+  position: relative;
+}
+.flashcard:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+.flashcard .fc-main {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+.flashcard .fc-sub {
+  font-size: 16px;
+  color: #888;
+}
+.flashcard .fc-hint {
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 16px;
+}
+.flashcard .fc-front,
+.flashcard .fc-answer {
+  transition: opacity 0.25s;
+}
+.flashcard .fc-answer {
+  opacity: 0;
+  position: absolute;
+}
+.flashcard.flipped .fc-front { opacity: 0; position: absolute; }
+.flashcard.flipped .fc-answer { opacity: 1; position: static; }
+.flashcard.flipped .fc-hint { display: none; }
+
+.practice-actions {
+  display: none;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.practice-actions.visible { display: flex; }
+.practice-actions button {
+  flex: 1;
+  max-width: 150px;
+  padding: 12px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.practice-actions button:hover { opacity: 0.85; }
+.practice-actions .btn-unknown { background: #e74c3c; }
+.practice-actions .btn-known { background: #27ae60; }
+
+.practice-result {
+  text-align: center;
+  padding: 20px 0;
+}
+.practice-result h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.practice-result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+.practice-result-stats .stat-num {
+  font-size: 28px;
+  font-weight: bold;
+}
+.practice-result-stats .stat-num.known { color: #27ae60; }
+.practice-result-stats .stat-num.unknown { color: #e74c3c; }
+.practice-result-stats .stat-num.rate { color: #333; }
+.practice-result-stats .stat-label {
+  font-size: 12px;
+  color: #888;
+}
+.practice-result-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.practice-result-actions button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.practice-retry-btn {
+  background: #c0392b;
+  color: white;
+  border: none;
+}
+.practice-retry-btn:hover { background: #a93226; }
+.practice-back-btn {
+  background: transparent;
+  color: #666;
+  border: 1px solid #ddd;
+}
+.practice-back-btn:hover { background: #f0f0f0; }
+
+@media (max-width: 768px) {
+  .flashcard {
+    max-width: 100%;
+    padding: 36px 20px;
+  }
+  .flashcard .fc-main { font-size: 26px; }
+  .practice-actions button { max-width: none; }
+  .practice-result-actions { flex-direction: column; align-items: center; }
+  .practice-result-actions button { width: 80%; max-width: 280px; }
+}
 </style>
 </head>
 <body>
@@ -351,6 +579,7 @@ mark {
     <div class="lesson-title">わたしは マイク・ミラーです</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">わたし</span><span class="kanji"></span><span class="pos-tag pos-noun">名詞</span><span class="translation">我</span><button class="speak-btn" data-text="わたし">&#128266;</button></div>
@@ -446,6 +675,7 @@ mark {
     <div class="lesson-title">これは 本です</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">これ</span><span class="kanji"></span><span class="pos-tag pos-other">指示詞</span><span class="translation">這個</span><button class="speak-btn" data-text="これ">&#128266;</button></div>
@@ -546,6 +776,7 @@ mark {
     <div class="lesson-title">ここは 食堂です</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">ここ</span><span class="kanji"></span><span class="pos-tag pos-other">指示詞</span><span class="translation">這裡</span><button class="speak-btn" data-text="ここ">&#128266;</button></div>
@@ -630,6 +861,7 @@ mark {
     <div class="lesson-title">今 何時ですか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">おきます</span><span class="kanji">起きます</span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">起床</span><button class="speak-btn" data-text="おきます">&#128266;</button></div>
@@ -726,6 +958,7 @@ mark {
     <div class="lesson-title">甲賀へ 行きます</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">いきます</span><span class="kanji">行きます</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">去</span><button class="speak-btn" data-text="いきます">&#128266;</button></div>
@@ -812,6 +1045,7 @@ mark {
     <div class="lesson-title">いっしょに 京都へ 行きませんか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">たべます</span><span class="kanji">食べます</span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">吃</span><button class="speak-btn" data-text="たべます">&#128266;</button></div>
@@ -915,6 +1149,7 @@ mark {
     <div class="lesson-title">プレゼントを もらいました</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">きります</span><span class="kanji">切ります</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">切、剪</span><button class="speak-btn" data-text="きります">&#128266;</button></div>
@@ -1029,6 +1264,7 @@ mark {
     <div class="lesson-title">そろそろ 失礼します</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">ハンサム</span><span class="kanji"></span><span class="pos-tag pos-na-adj">な形容詞</span><span class="translation">英俊</span><button class="speak-btn" data-text="ハンサム">&#128266;</button></div>
@@ -1166,6 +1402,7 @@ mark {
     <div class="lesson-title">残念ですが、ちょっと 都合が 悪いんです</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">わかります</span><span class="kanji">分かります</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">懂、明白</span><button class="speak-btn" data-text="わかります">&#128266;</button></div>
@@ -1288,6 +1525,7 @@ mark {
     <div class="lesson-title">あそこに コンビニが あります</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">います</span><span class="kanji"></span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">有（有生命物）</span><button class="speak-btn" data-text="います">&#128266;</button></div>
@@ -1399,6 +1637,7 @@ mark {
     <div class="lesson-title">これ、お願いします</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">います</span><span class="kanji"></span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">需要、要</span><button class="speak-btn" data-text="います">&#128266;</button></div>
@@ -1523,6 +1762,7 @@ mark {
     <div class="lesson-title">お祭りは どうでしたか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">かんたん</span><span class="kanji">簡単</span><span class="pos-tag pos-na-adj">な形容詞</span><span class="translation">簡單</span><button class="speak-btn" data-text="かんたん">&#128266;</button></div>
@@ -1650,6 +1890,7 @@ mark {
     <div class="lesson-title">別々に お願いします</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">あそびます</span><span class="kanji">遊びます</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">玩</span><button class="speak-btn" data-text="あそびます">&#128266;</button></div>
@@ -1746,6 +1987,7 @@ mark {
     <div class="lesson-title">みどり町まで お願いします</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">つけます</span><span class="kanji"></span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">打開（電源）</span><button class="speak-btn" data-text="つけます">&#128266;</button></div>
@@ -1837,6 +2079,7 @@ mark {
     <div class="lesson-title">ご家族は？</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">おきます</span><span class="kanji">置きます</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">放置</span><button class="speak-btn" data-text="おきます">&#128266;</button></div>
@@ -1930,6 +2173,7 @@ mark {
     <div class="lesson-title">使い方を 教えてください</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">のります</span><span class="kanji">乗ります</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">搭乘</span><button class="speak-btn" data-text="のります">&#128266;</button></div>
@@ -2025,6 +2269,7 @@ mark {
     <div class="lesson-title">どう しましたか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">おぼえます</span><span class="kanji">覚えます</span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">記住</span><button class="speak-btn" data-text="おぼえます">&#128266;</button></div>
@@ -2113,6 +2358,7 @@ mark {
     <div class="lesson-title">趣味は 何ですか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">できます</span><span class="kanji"></span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">會、能做</span><button class="speak-btn" data-text="できます">&#128266;</button></div>
@@ -2208,6 +2454,7 @@ mark {
     <div class="lesson-title">旅行は どうでしたか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">のぼります</span><span class="kanji">登ります</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">攀登</span><button class="speak-btn" data-text="のぼります">&#128266;</button></div>
@@ -2289,6 +2536,7 @@ mark {
     <div class="lesson-title">夏休みは どこか 行きましたか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">いります</span><span class="kanji">要ります</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">需要</span><button class="speak-btn" data-text="いります">&#128266;</button></div>
@@ -2366,6 +2614,7 @@ mark {
     <div class="lesson-title">わたしは あした 雨が 降ると 思います</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">おもいます</span><span class="kanji">思います</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">認為</span><button class="speak-btn" data-text="おもいます">&#128266;</button></div>
@@ -2461,6 +2710,7 @@ mark {
     <div class="lesson-title">これは 友達に もらった 本です</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">きます</span><span class="kanji">着ます</span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">穿(上半身)</span><button class="speak-btn" data-text="きます">&#128266;</button></div>
@@ -2549,6 +2799,7 @@ mark {
     <div class="lesson-title">どうやって 行きますか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">ききます</span><span class="kanji">聞きます</span><span class="pos-tag pos-verb1">動詞I</span><span class="translation">問、詢問</span><button class="speak-btn" data-text="ききます">&#128266;</button></div>
@@ -2634,6 +2885,7 @@ mark {
     <div class="lesson-title">手伝って もらいませんか</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">くれます</span><span class="kanji"></span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">給(我)</span><button class="speak-btn" data-text="くれます">&#128266;</button></div>
@@ -2723,6 +2975,7 @@ mark {
     <div class="lesson-title">日本へ 来たら、ぜひ 遊びに 来て ください</div>
   </div>
 
+  <div class="practice-btn-wrapper"><button class="practice-btn">&#128221; 開始練習</button><span class="practice-last-score"></span></div>
   <div class="section-title">単語</div>
   <div class="vocab-list">
     <div class="vocab-row"><span class="word">かんがえます</span><span class="kanji">考えます</span><span class="pos-tag pos-verb2">動詞II</span><span class="translation">考慮</span><button class="speak-btn" data-text="かんがえます">&#128266;</button></div>
@@ -2966,6 +3219,268 @@ document.querySelectorAll('.lesson').forEach(function(lesson) {
 document.getElementById('menu-toggle').addEventListener('click', function() {
   document.getElementById('sidebar').classList.toggle('open');
 });
+
+// === Flashcard Practice ===
+(function() {
+  // Fisher-Yates shuffle
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+    }
+    return arr;
+  }
+
+  function getWordKey(word) {
+    return word.kana + '|' + word.translation;
+  }
+
+  function loadRecord(lessonId) {
+    try {
+      var data = localStorage.getItem('minna-practice-' + lessonId);
+      return data ? JSON.parse(data) : null;
+    } catch(e) { return null; }
+  }
+
+  function saveRecord(lessonId, words) {
+    try {
+      localStorage.setItem('minna-practice-' + lessonId, JSON.stringify({
+        lastDate: new Date().toISOString().slice(0, 10),
+        words: words
+      }));
+    } catch(e) { /* QuotaExceededError — silent fail */ }
+  }
+
+  function extractWords(lesson) {
+    var words = [];
+    lesson.querySelectorAll('.vocab-row').forEach(function(row) {
+      words.push({
+        kana: row.querySelector('.word').textContent,
+        kanji: row.querySelector('.kanji').textContent,
+        translation: row.querySelector('.translation').textContent
+      });
+    });
+    return words;
+  }
+
+  function updateLastScore(lesson) {
+    var lessonId = lesson.id;
+    var record = loadRecord(lessonId);
+    var scoreEl = lesson.querySelector('.practice-last-score');
+    if (!scoreEl) return;
+    if (!record || !record.words) { scoreEl.textContent = ''; return; }
+    var total = 0, known = 0;
+    for (var k in record.words) {
+      total++;
+      if (record.words[k]) known++;
+    }
+    if (total > 0) {
+      scoreEl.textContent = '上次：' + known + '/' + total + ' 認識';
+    }
+  }
+
+  function startPractice(lesson, wordSubset) {
+    var lessonId = lesson.id;
+    var lessonNum = lesson.querySelector('.lesson-number').textContent;
+    var allWords = extractWords(lesson);
+    var words = wordSubset || allWords;
+    words = shuffle(words.slice());
+
+    // Hide lesson content except header and practice area
+    Array.prototype.forEach.call(lesson.children, function(child) {
+      if (!child.classList.contains('lesson-header') && !child.classList.contains('practice-area')) {
+        child.setAttribute('data-practice-hidden', '');
+        child.style.display = 'none';
+      }
+    });
+
+    var area = lesson.querySelector('.practice-area');
+    if (!area) {
+      area = document.createElement('div');
+      area.className = 'practice-area';
+      lesson.appendChild(area);
+    }
+    area.classList.add('active');
+
+    var currentIndex = 0;
+    var direction = 'jp2zh'; // 'jp2zh' or 'zh2jp'
+    var results = {}; // key -> true/false
+
+    function renderCard() {
+      if (currentIndex >= words.length) {
+        renderResult();
+        return;
+      }
+      var word = words[currentIndex];
+      var dirLabel = direction === 'jp2zh' ? '日文 → 中文' : '中文 → 日文';
+
+      var front, frontSub, answer, answerSub;
+      if (direction === 'jp2zh') {
+        front = word.kana;
+        frontSub = word.kanji || '';
+        answer = word.translation;
+        answerSub = '';
+      } else {
+        front = word.translation;
+        frontSub = '';
+        answer = word.kana;
+        answerSub = word.kanji || '';
+      }
+
+      area.innerHTML =
+        '<div class="practice-header">' +
+          '<div class="practice-header-left">' +
+            '<span class="practice-label">' + lessonNum + ' 練習</span>' +
+            '<span class="practice-direction">' + dirLabel + '</span>' +
+          '</div>' +
+          '<div class="practice-header-right">' +
+            '<button class="practice-switch-btn">切換方向</button>' +
+            '<button class="practice-end-btn">✕ 結束</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="practice-progress">' +
+          '<div class="practice-progress-bar"><div class="practice-progress-fill" style="width:' + Math.round(currentIndex / words.length * 100) + '%"></div></div>' +
+          '<div class="practice-progress-text">第 ' + (currentIndex + 1) + ' / ' + words.length + ' 張</div>' +
+        '</div>' +
+        '<div class="flashcard">' +
+          '<div class="fc-front">' +
+            '<div class="fc-main">' + front + '</div>' +
+            (frontSub ? '<div class="fc-sub">' + frontSub + '</div>' : '') +
+          '</div>' +
+          '<div class="fc-answer">' +
+            '<div class="fc-main">' + answer + '</div>' +
+            (answerSub ? '<div class="fc-sub">' + answerSub + '</div>' : '') +
+          '</div>' +
+          '<div class="fc-hint">&#128070; 點擊翻牌</div>' +
+        '</div>' +
+        '<div class="practice-actions">' +
+          '<button class="btn-unknown">&#10060; 不認識</button>' +
+          '<button class="btn-known">&#9989; 認識</button>' +
+        '</div>';
+
+      // Event: flip card
+      var card = area.querySelector('.flashcard');
+      card.addEventListener('click', function() {
+        if (!card.classList.contains('flipped')) {
+          card.classList.add('flipped');
+          area.querySelector('.practice-actions').classList.add('visible');
+        }
+      });
+
+      // Event: known / unknown
+      area.querySelector('.btn-known').addEventListener('click', function() {
+        results[getWordKey(words[currentIndex])] = true;
+        currentIndex++;
+        renderCard();
+      });
+      area.querySelector('.btn-unknown').addEventListener('click', function() {
+        results[getWordKey(words[currentIndex])] = false;
+        currentIndex++;
+        renderCard();
+      });
+
+      // Event: switch direction
+      area.querySelector('.practice-switch-btn').addEventListener('click', function() {
+        direction = direction === 'jp2zh' ? 'zh2jp' : 'jp2zh';
+        var dirEl = area.querySelector('.practice-direction');
+        dirEl.textContent = direction === 'jp2zh' ? '日文 → 中文' : '中文 → 日文';
+      });
+
+      // Event: end practice
+      area.querySelector('.practice-end-btn').addEventListener('click', function() {
+        endPractice();
+      });
+    }
+
+    function renderResult() {
+      var knownCount = 0, unknownCount = 0;
+      var unknownWords = [];
+      for (var i = 0; i < words.length; i++) {
+        var key = getWordKey(words[i]);
+        if (results[key]) {
+          knownCount++;
+        } else {
+          unknownCount++;
+          unknownWords.push(words[i]);
+        }
+      }
+      var rate = words.length > 0 ? Math.round(knownCount / words.length * 100) : 0;
+
+      // Merge results into full record
+      var record = loadRecord(lessonId);
+      var fullWords = (record && record.words) ? record.words : {};
+      // If this was a full practice, replace all; if retry, merge
+      if (!wordSubset) {
+        fullWords = results;
+      } else {
+        for (var k in results) {
+          fullWords[k] = results[k];
+        }
+      }
+      saveRecord(lessonId, fullWords);
+
+      var retryBtn = unknownCount > 0
+        ? '<button class="practice-retry-btn">&#128260; 只練不認識的 (' + unknownCount + ')</button>'
+        : '';
+
+      area.innerHTML =
+        '<div class="practice-result">' +
+          '<h3>練習完成！</h3>' +
+          '<div class="practice-result-stats">' +
+            '<div><div class="stat-num known">' + knownCount + '</div><div class="stat-label">認識</div></div>' +
+            '<div><div class="stat-num unknown">' + unknownCount + '</div><div class="stat-label">不認識</div></div>' +
+            '<div><div class="stat-num rate">' + rate + '%</div><div class="stat-label">正確率</div></div>' +
+          '</div>' +
+          '<div class="practice-result-actions">' +
+            retryBtn +
+            '<button class="practice-back-btn">&#128203; 回到單字列表</button>' +
+          '</div>' +
+        '</div>';
+
+      // Event: retry unknown
+      var retryEl = area.querySelector('.practice-retry-btn');
+      if (retryEl) {
+        retryEl.addEventListener('click', function() {
+          startPractice(lesson, unknownWords);
+        });
+      }
+
+      // Event: back to list
+      area.querySelector('.practice-back-btn').addEventListener('click', function() {
+        endPractice();
+      });
+
+      updateLastScore(lesson);
+    }
+
+    function endPractice() {
+      area.classList.remove('active');
+      area.innerHTML = '';
+      Array.prototype.forEach.call(lesson.children, function(child) {
+        if (child.hasAttribute('data-practice-hidden')) {
+          child.removeAttribute('data-practice-hidden');
+          child.style.display = '';
+        }
+      });
+    }
+
+    renderCard();
+  }
+
+  // Event delegation for practice buttons
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.practice-btn');
+    if (!btn) return;
+    var lesson = btn.closest('.lesson');
+    if (!lesson) return;
+    startPractice(lesson, null);
+  });
+
+  // Initialize last scores on page load
+  document.querySelectorAll('.lesson').forEach(function(lesson) {
+    updateLastScore(lesson);
+  });
+})();
 </script>
 
 </body>
