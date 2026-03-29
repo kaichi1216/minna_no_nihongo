@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大家的日本語 初級 I＆II 動詞總表</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Hiragino Sans", "Noto Sans TC", "Noto Sans JP", "Microsoft JhengHei", sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    padding: 2rem 1rem;
+    line-height: 1.6;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  h1 { text-align: center; font-size: 1.8rem; margin-bottom: 0.5rem; color: #16213e; }
+  .subtitle { text-align: center; color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; }
+
+  /* Tabs */
+  .tabs {
+    display: flex; justify-content: center; gap: 0.5rem;
+    margin-bottom: 1rem; flex-wrap: wrap;
+  }
+  .tabs button {
+    padding: 0.5rem 1.25rem; border: 2px solid #ddd; border-radius: 10px;
+    background: #fff; font-size: 0.95rem; cursor: pointer; transition: all 0.2s;
+    font-family: inherit;
+  }
+  .tabs button:hover { border-color: #4361ee; color: #4361ee; }
+  .tabs button.active { background: #4361ee; color: #fff; border-color: #4361ee; }
+
+  /* Search */
+  .search-bar { display: flex; justify-content: center; margin-bottom: 1rem; }
+  .search-bar input {
+    width: 100%; max-width: 420px; padding: 0.65rem 1rem;
+    border: 2px solid #ddd; border-radius: 10px; font-size: 1rem;
+    outline: none; transition: border-color 0.2s;
+  }
+  .search-bar input:focus { border-color: #4361ee; }
+
+  .count { text-align: center; font-size: 0.85rem; color: #888; margin-bottom: 1.5rem; }
+
+  /* Group sections */
+  .group { margin-bottom: 2.5rem; }
+  .group-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1rem; padding: 0.75rem 1.25rem;
+    border-radius: 12px; color: #fff; font-size: 1.15rem; font-weight: 700;
+  }
+  .group-header .badge {
+    background: rgba(255,255,255,0.25); padding: 0.15rem 0.6rem;
+    border-radius: 6px; font-size: 0.85rem;
+  }
+  .group1 .group-header { background: linear-gradient(135deg, #4361ee, #3a0ca3); }
+  .group2 .group-header { background: linear-gradient(135deg, #f72585, #b5179e); }
+  .group3 .group-header { background: linear-gradient(135deg, #06d6a0, #028a6b); }
+
+  /* Table */
+  table {
+    width: 100%; border-collapse: separate; border-spacing: 0;
+    background: #fff; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  thead th {
+    padding: 0.7rem 0.8rem; text-align: left; font-size: 0.82rem;
+    text-transform: uppercase; letter-spacing: 0.05em; color: #fff;
+    position: sticky; top: 0; z-index: 2;
+  }
+  .group1 thead th { background: #4361ee; }
+  .group2 thead th { background: #f72585; }
+  .group3 thead th { background: #06d6a0; color: #064e3b; }
+
+  tbody tr { transition: background 0.15s; }
+  tbody tr:hover { background: #f8f9ff; }
+  tbody tr:not(:last-child) td { border-bottom: 1px solid #eee; }
+
+  td { padding: 0.55rem 0.8rem; font-size: 0.92rem; }
+  td:first-child { font-weight: 600; }
+  td:nth-child(2) { color: #555; font-size: 0.85rem; }
+
+  .te { color: #e63946; font-weight: 600; }
+  .masu { color: #4361ee; font-weight: 600; }
+  .nai { color: #e67e22; font-weight: 600; }
+
+  /* Book badge */
+  .book {
+    display: inline-block; padding: 0.1rem 0.45rem; border-radius: 5px;
+    font-size: 0.75rem; font-weight: 700; color: #fff; white-space: nowrap;
+  }
+  .b1 { background: #ff9f1c; }
+  .b2 { background: #7209b7; }
+
+  .hidden { display: none; }
+
+  /* Back to home */
+  .back-home {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #4361ee;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-home:hover { opacity: 0.7; }
+
+  /* Speaker button */
+  .speak-btn {
+    background: none; border: none; cursor: pointer; font-size: 1.1rem;
+    padding: 0.1rem 0.3rem; border-radius: 6px; transition: all 0.15s;
+    vertical-align: middle; line-height: 1; opacity: 0.5;
+  }
+  .speak-btn:hover { opacity: 1; background: #eef; transform: scale(1.2); }
+  .speak-btn.playing { opacity: 1; animation: pulse 0.6s infinite alternate; }
+  @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.25); } }
+
+  /* Rule box */
+  .rule-box {
+    margin-top: 2.5rem; background: #fff; border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); overflow: hidden;
+  }
+  .rule-box h2 {
+    background: linear-gradient(135deg, #ff9f1c, #e36414);
+    color: #fff; padding: 0.75rem 1.25rem; font-size: 1.1rem;
+  }
+  .rule-box table { box-shadow: none; border-radius: 0; }
+  .rule-box thead th { background: #ff9f1c; }
+  .exception { background: #fff3cd !important; }
+  .exception td { color: #856404; font-weight: 600; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .search-bar, .count, .tabs { display: none; }
+    .group-header, thead th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    table { box-shadow: none; page-break-inside: auto; }
+    tr { page-break-inside: avoid; }
+  }
+  @media (max-width: 600px) {
+    h1 { font-size: 1.3rem; }
+    td, thead th { padding: 0.45rem 0.5rem; font-size: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <a class="back-home" href="../../">← 返回首頁</a>
+  <h1>大家的日本語 初級 I＆II 動詞總表</h1>
+  <p class="subtitle">みんなの日本語 初級 I（第1〜25課）＋ 初級 II（第26〜50課）全動詞</p>
+
+  <div class="tabs">
+    <button class="active" data-filter="all">全部</button>
+    <button data-filter="1">初級 I（1〜25課）</button>
+    <button data-filter="2">初級 II（26〜50課）</button>
+  </div>
+
+  <div class="search-bar">
+    <input type="text" id="search" placeholder="搜尋動詞（日文 / 中文）…">
+  </div>
+  <p class="count" id="count"></p>
+
+  <!-- ===== 一類動詞 ===== -->
+  <div class="group group1">
+    <div class="group-header">一類動詞（五段動詞）<span class="badge">Group I</span></div>
+    <table>
+      <thead><tr><th>冊</th><th>原形（辞書形）</th><th>讀音</th><th>ます形</th><th>て形</th><th>ない形</th><th>中文</th></tr></thead>
+      <tbody>
+        <!-- 初級 I -->
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>会う</td><td>あう</td><td class="masu">会います</td><td class="te">会って</td><td class="nai">会わない</td><td>見面</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>遊ぶ</td><td>あそぶ</td><td class="masu">遊びます</td><td class="te">遊んで</td><td class="nai">遊ばない</td><td>玩</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>洗う</td><td>あらう</td><td class="masu">洗います</td><td class="te">洗って</td><td class="nai">洗わない</td><td>洗</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>ある</td><td>ある</td><td class="masu">あります</td><td class="te">あって</td><td class="nai">ない</td><td>有（物品）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>歩く</td><td>あるく</td><td class="masu">歩きます</td><td class="te">歩いて</td><td class="nai">歩かない</td><td>走路</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>言う</td><td>いう</td><td class="masu">言います</td><td class="te">言って</td><td class="nai">言わない</td><td>說</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>行く</td><td>いく</td><td class="masu">行きます</td><td class="te">行って＊</td><td class="nai">行かない</td><td>去</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>急ぐ</td><td>いそぐ</td><td class="masu">急ぎます</td><td class="te">急いで</td><td class="nai">急がない</td><td>趕快</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>要る</td><td>いる</td><td class="masu">要ります</td><td class="te">要って</td><td class="nai">要らない</td><td>需要</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>動く</td><td>うごく</td><td class="masu">動きます</td><td class="te">動いて</td><td class="nai">動かない</td><td>動</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>歌う</td><td>うたう</td><td class="masu">歌います</td><td class="te">歌って</td><td class="nai">歌わない</td><td>唱歌</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>売る</td><td>うる</td><td class="masu">売ります</td><td class="te">売って</td><td class="nai">売らない</td><td>賣</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>置く</td><td>おく</td><td class="masu">置きます</td><td class="te">置いて</td><td class="nai">置かない</td><td>放置</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>送る</td><td>おくる</td><td class="masu">送ります</td><td class="te">送って</td><td class="nai">送らない</td><td>送</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>押す</td><td>おす</td><td class="masu">押します</td><td class="te">押して</td><td class="nai">押さない</td><td>推、按</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>思う</td><td>おもう</td><td class="masu">思います</td><td class="te">思って</td><td class="nai">思わない</td><td>想、認為</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>泳ぐ</td><td>およぐ</td><td class="masu">泳ぎます</td><td class="te">泳いで</td><td class="nai">泳がない</td><td>游泳</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>終わる</td><td>おわる</td><td class="masu">終わります</td><td class="te">終わって</td><td class="nai">終わらない</td><td>結束（自動）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>返す</td><td>かえす</td><td class="masu">返します</td><td class="te">返して</td><td class="nai">返さない</td><td>歸還</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>帰る</td><td>かえる</td><td class="masu">帰ります</td><td class="te">帰って</td><td class="nai">帰らない</td><td>回家</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>かかる</td><td>かかる</td><td class="masu">かかります</td><td class="te">かかって</td><td class="nai">かからない</td><td>花費（時間/金錢）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>書く</td><td>かく</td><td class="masu">書きます</td><td class="te">書いて</td><td class="nai">書かない</td><td>寫</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>貸す</td><td>かす</td><td class="masu">貸します</td><td class="te">貸して</td><td class="nai">貸さない</td><td>借出</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>買う</td><td>かう</td><td class="masu">買います</td><td class="te">買って</td><td class="nai">買わない</td><td>買</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>かぶる</td><td>かぶる</td><td class="masu">かぶります</td><td class="te">かぶって</td><td class="nai">かぶらない</td><td>戴（帽子）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>聞く</td><td>きく</td><td class="masu">聞きます</td><td class="te">聞いて</td><td class="nai">聞かない</td><td>聽、問</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>切る</td><td>きる</td><td class="masu">切ります</td><td class="te">切って</td><td class="nai">切らない</td><td>切</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>消す</td><td>けす</td><td class="masu">消します</td><td class="te">消して</td><td class="nai">消さない</td><td>關（燈）、擦掉</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>吸う</td><td>すう</td><td class="masu">吸います</td><td class="te">吸って</td><td class="nai">吸わない</td><td>吸（菸）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>住む</td><td>すむ</td><td class="masu">住みます</td><td class="te">住んで</td><td class="nai">住まない</td><td>住</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>座る</td><td>すわる</td><td class="masu">座ります</td><td class="te">座って</td><td class="nai">座らない</td><td>坐</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>出す</td><td>だす</td><td class="masu">出します</td><td class="te">出して</td><td class="nai">出さない</td><td>拿出、寄出</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>立つ</td><td>たつ</td><td class="masu">立ちます</td><td class="te">立って</td><td class="nai">立たない</td><td>站</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>使う</td><td>つかう</td><td class="masu">使います</td><td class="te">使って</td><td class="nai">使わない</td><td>使用</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>着く</td><td>つく</td><td class="masu">着きます</td><td class="te">着いて</td><td class="nai">着かない</td><td>到達</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>作る</td><td>つくる</td><td class="masu">作ります</td><td class="te">作って</td><td class="nai">作らない</td><td>做、製作</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>手伝う</td><td>てつだう</td><td class="masu">手伝います</td><td class="te">手伝って</td><td class="nai">手伝わない</td><td>幫忙</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>飛ぶ</td><td>とぶ</td><td class="masu">飛びます</td><td class="te">飛んで</td><td class="nai">飛ばない</td><td>飛</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>撮る</td><td>とる</td><td class="masu">撮ります</td><td class="te">撮って</td><td class="nai">撮らない</td><td>拍照</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>取る</td><td>とる</td><td class="masu">取ります</td><td class="te">取って</td><td class="nai">取らない</td><td>取、拿</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>泊まる</td><td>とまる</td><td class="masu">泊まります</td><td class="te">泊まって</td><td class="nai">泊まらない</td><td>住宿</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>習う</td><td>ならう</td><td class="masu">習います</td><td class="te">習って</td><td class="nai">習わない</td><td>學習</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>登る</td><td>のぼる</td><td class="masu">登ります</td><td class="te">登って</td><td class="nai">登らない</td><td>爬（山）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>飲む</td><td>のむ</td><td class="masu">飲みます</td><td class="te">飲んで</td><td class="nai">飲まない</td><td>喝</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>乗る</td><td>のる</td><td class="masu">乗ります</td><td class="te">乗って</td><td class="nai">乗らない</td><td>搭乘</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>入る</td><td>はいる</td><td class="masu">入ります</td><td class="te">入って</td><td class="nai">入らない</td><td>進入</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>履く</td><td>はく</td><td class="masu">履きます</td><td class="te">履いて</td><td class="nai">履かない</td><td>穿（鞋褲）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>始まる</td><td>はじまる</td><td class="masu">始まります</td><td class="te">始まって</td><td class="nai">始まらない</td><td>開始（自動）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>話す</td><td>はなす</td><td class="masu">話します</td><td class="te">話して</td><td class="nai">話さない</td><td>說話</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>払う</td><td>はらう</td><td class="masu">払います</td><td class="te">払って</td><td class="nai">払わない</td><td>付錢</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>弾く</td><td>ひく</td><td class="masu">弾きます</td><td class="te">弾いて</td><td class="nai">弾かない</td><td>彈（琴）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>引く</td><td>ひく</td><td class="masu">引きます</td><td class="te">引いて</td><td class="nai">引かない</td><td>拉</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>働く</td><td>はたらく</td><td class="masu">働きます</td><td class="te">働いて</td><td class="nai">働かない</td><td>工作</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>太る</td><td>ふとる</td><td class="masu">太ります</td><td class="te">太って</td><td class="nai">太らない</td><td>胖</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>降る</td><td>ふる</td><td class="masu">降ります</td><td class="te">降って</td><td class="nai">降らない</td><td>下（雨/雪）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>曲がる</td><td>まがる</td><td class="masu">曲がります</td><td class="te">曲がって</td><td class="nai">曲がらない</td><td>轉彎</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>待つ</td><td>まつ</td><td class="masu">待ちます</td><td class="te">待って</td><td class="nai">待たない</td><td>等</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>回す</td><td>まわす</td><td class="masu">回します</td><td class="te">回して</td><td class="nai">回さない</td><td>轉</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>持つ</td><td>もつ</td><td class="masu">持ちます</td><td class="te">持って</td><td class="nai">持たない</td><td>拿、持有</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>もらう</td><td>もらう</td><td class="masu">もらいます</td><td class="te">もらって</td><td class="nai">もらわない</td><td>收到</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>休む</td><td>やすむ</td><td class="masu">休みます</td><td class="te">休んで</td><td class="nai">休まない</td><td>休息</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>呼ぶ</td><td>よぶ</td><td class="masu">呼びます</td><td class="te">呼んで</td><td class="nai">呼ばない</td><td>叫、呼喚</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>読む</td><td>よむ</td><td class="masu">読みます</td><td class="te">読んで</td><td class="nai">読まない</td><td>讀</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>わかる</td><td>わかる</td><td class="masu">わかります</td><td class="te">わかって</td><td class="nai">わからない</td><td>理解、明白</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>渡る</td><td>わたる</td><td class="masu">渡ります</td><td class="te">渡って</td><td class="nai">渡らない</td><td>過（馬路）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>知る</td><td>しる</td><td class="masu">知ります</td><td class="te">知って</td><td class="nai">知らない</td><td>知道</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>なくす</td><td>なくす</td><td class="masu">なくします</td><td class="te">なくして</td><td class="nai">なくさない</td><td>弄丟</td></tr>
+        <!-- 初級 II -->
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>探す</td><td>さがす</td><td class="masu">探します</td><td class="te">探して</td><td class="nai">探さない</td><td>找、尋找</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>直す</td><td>なおす</td><td class="masu">直します</td><td class="te">直して</td><td class="nai">直さない</td><td>修理</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>戻す</td><td>もどす</td><td class="masu">戻します</td><td class="te">戻して</td><td class="nai">戻さない</td><td>放回原處</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>落とす</td><td>おとす</td><td class="masu">落とします</td><td class="te">落として</td><td class="nai">落とさない</td><td>弄掉</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>壊す</td><td>こわす</td><td class="masu">壊します</td><td class="te">壊して</td><td class="nai">壊さない</td><td>弄壞</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>外す</td><td>はずす</td><td class="masu">外します</td><td class="te">外して</td><td class="nai">外さない</td><td>取下</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>汚す</td><td>よごす</td><td class="masu">汚します</td><td class="te">汚して</td><td class="nai">汚さない</td><td>弄髒</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>思い出す</td><td>おもいだす</td><td class="masu">思い出します</td><td class="te">思い出して</td><td class="nai">思い出さない</td><td>想起</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>引っ越す</td><td>ひっこす</td><td class="masu">引っ越します</td><td class="te">引っ越して</td><td class="nai">引っ越さない</td><td>搬家</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>刺す</td><td>さす</td><td class="masu">刺します</td><td class="te">刺して</td><td class="nai">刺さない</td><td>刺、叮</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>届く</td><td>とどく</td><td class="masu">届きます</td><td class="te">届いて</td><td class="nai">届かない</td><td>送達</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>つく</td><td>つく</td><td class="masu">つきます</td><td class="te">ついて</td><td class="nai">つかない</td><td>附著、（燈）亮</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>磨く</td><td>みがく</td><td class="masu">磨きます</td><td class="te">磨いて</td><td class="nai">磨かない</td><td>刷（牙）、磨</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>咲く</td><td>さく</td><td class="masu">咲きます</td><td class="te">咲いて</td><td class="nai">咲かない</td><td>開花</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>焼く</td><td>やく</td><td class="masu">焼きます</td><td class="te">焼いて</td><td class="nai">焼かない</td><td>烤、燒</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>泣く</td><td>なく</td><td class="masu">泣きます</td><td class="te">泣いて</td><td class="nai">泣かない</td><td>哭</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>開く</td><td>あく</td><td class="masu">開きます</td><td class="te">開いて</td><td class="nai">開かない</td><td>打開（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>剥く</td><td>むく</td><td class="masu">剥きます</td><td class="te">剥いて</td><td class="nai">剥かない</td><td>剝（皮）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>騒ぐ</td><td>さわぐ</td><td class="masu">騒ぎます</td><td class="te">騒いで</td><td class="nai">騒がない</td><td>吵鬧</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>間に合う</td><td>まにあう</td><td class="masu">間に合います</td><td class="te">間に合って</td><td class="nai">間に合わない</td><td>來得及</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>やる</td><td>やる</td><td class="masu">やります</td><td class="te">やって</td><td class="nai">やらない</td><td>做、給</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>飼う</td><td>かう</td><td class="masu">飼います</td><td class="te">飼って</td><td class="nai">飼わない</td><td>飼養</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>通う</td><td>かよう</td><td class="masu">通います</td><td class="te">通って</td><td class="nai">通わない</td><td>通勤、通學</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>誘う</td><td>さそう</td><td class="masu">誘います</td><td class="te">誘って</td><td class="nai">誘わない</td><td>邀請</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>合う</td><td>あう</td><td class="masu">合います</td><td class="te">合って</td><td class="nai">合わない</td><td>合適</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>笑う</td><td>わらう</td><td class="masu">笑います</td><td class="te">笑って</td><td class="nai">笑わない</td><td>笑</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>間違う</td><td>まちがう</td><td class="masu">間違います</td><td class="te">間違って</td><td class="nai">間違わない</td><td>搞錯</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>光る</td><td>ひかる</td><td class="masu">光ります</td><td class="te">光って</td><td class="nai">光らない</td><td>發光</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>貼る</td><td>はる</td><td class="masu">貼ります</td><td class="te">貼って</td><td class="nai">貼らない</td><td>貼</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>走る</td><td>はしる</td><td class="masu">走ります</td><td class="te">走って</td><td class="nai">走らない</td><td>跑</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>守る</td><td>まもる</td><td class="masu">守ります</td><td class="te">守って</td><td class="nai">守らない</td><td>遵守、保護</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>飾る</td><td>かざる</td><td class="masu">飾ります</td><td class="te">飾って</td><td class="nai">飾らない</td><td>裝飾</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>触る</td><td>さわる</td><td class="masu">触ります</td><td class="te">触って</td><td class="nai">触らない</td><td>觸摸</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>変わる</td><td>かわる</td><td class="masu">変わります</td><td class="te">変わって</td><td class="nai">変わらない</td><td>改變（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>困る</td><td>こまる</td><td class="masu">困ります</td><td class="te">困って</td><td class="nai">困らない</td><td>困擾</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>叱る</td><td>しかる</td><td class="masu">叱ります</td><td class="te">叱って</td><td class="nai">叱らない</td><td>責備</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>治る</td><td>なおる</td><td class="masu">治ります</td><td class="te">治って</td><td class="nai">治らない</td><td>痊癒</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>鳴る</td><td>なる</td><td class="masu">鳴ります</td><td class="te">鳴って</td><td class="nai">鳴らない</td><td>響</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>上がる</td><td>あがる</td><td class="masu">上がります</td><td class="te">上がって</td><td class="nai">上がらない</td><td>上升</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>下がる</td><td>さがる</td><td class="masu">下がります</td><td class="te">下がって</td><td class="nai">下がらない</td><td>下降</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>残る</td><td>のこる</td><td class="masu">残ります</td><td class="te">残って</td><td class="nai">残らない</td><td>剩下</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>見つかる</td><td>みつかる</td><td class="masu">見つかります</td><td class="te">見つかって</td><td class="nai">見つからない</td><td>被找到</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>閉まる</td><td>しまる</td><td class="masu">閉まります</td><td class="te">閉まって</td><td class="nai">閉まらない</td><td>關閉（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>止まる</td><td>とまる</td><td class="masu">止まります</td><td class="te">止まって</td><td class="nai">止まらない</td><td>停止（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>なくなる</td><td>なくなる</td><td class="masu">なくなります</td><td class="te">なくなって</td><td class="nai">なくならない</td><td>不見了</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>折る</td><td>おる</td><td class="masu">折ります</td><td class="te">折って</td><td class="nai">折らない</td><td>折</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>割る</td><td>わる</td><td class="masu">割ります</td><td class="te">割って</td><td class="nai">割らない</td><td>打破</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>サボる</td><td>サボる</td><td class="masu">サボります</td><td class="te">サボって</td><td class="nai">サボらない</td><td>翹課、偷懶</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>滑る</td><td>すべる</td><td class="masu">滑ります</td><td class="te">滑って</td><td class="nai">滑らない</td><td>滑</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>釣る</td><td>つる</td><td class="masu">釣ります</td><td class="te">釣って</td><td class="nai">釣らない</td><td>釣（魚）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>頑張る</td><td>がんばる</td><td class="masu">頑張ります</td><td class="te">頑張って</td><td class="nai">頑張らない</td><td>加油、努力</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>預かる</td><td>あずかる</td><td class="masu">預かります</td><td class="te">預かって</td><td class="nai">預からない</td><td>保管</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>しまう</td><td>しまう</td><td class="masu">しまいます</td><td class="te">しまって</td><td class="nai">しまわない</td><td>收起來</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>勝つ</td><td>かつ</td><td class="masu">勝ちます</td><td class="te">勝って</td><td class="nai">勝たない</td><td>贏</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>選ぶ</td><td>えらぶ</td><td class="masu">選びます</td><td class="te">選んで</td><td class="nai">選ばない</td><td>選擇</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>転ぶ</td><td>ころぶ</td><td class="masu">転びます</td><td class="te">転んで</td><td class="nai">転ばない</td><td>跌倒</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>踏む</td><td>ふむ</td><td class="masu">踏みます</td><td class="te">踏んで</td><td class="nai">踏まない</td><td>踩</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>盗む</td><td>ぬすむ</td><td class="masu">盗みます</td><td class="te">盗んで</td><td class="nai">盗まない</td><td>偷</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>楽しむ</td><td>たのしむ</td><td class="masu">楽しみます</td><td class="te">楽しんで</td><td class="nai">楽しまない</td><td>享受</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>包む</td><td>つつむ</td><td class="masu">包みます</td><td class="te">包んで</td><td class="nai">包まない</td><td>包</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>噛む</td><td>かむ</td><td class="masu">噛みます</td><td class="te">噛んで</td><td class="nai">噛まない</td><td>咬</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>申し込む</td><td>もうしこむ</td><td class="masu">申し込みます</td><td class="te">申し込んで</td><td class="nai">申し込まない</td><td>申請、報名</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>おっしゃる</td><td>おっしゃる</td><td class="masu">おっしゃいます</td><td class="te">おっしゃって</td><td class="nai">おっしゃらない</td><td>說（尊敬語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>いらっしゃる</td><td>いらっしゃる</td><td class="masu">いらっしゃいます</td><td class="te">いらっしゃって</td><td class="nai">いらっしゃらない</td><td>在/去/來（尊敬語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>くださる</td><td>くださる</td><td class="masu">くださいます</td><td class="te">くださって</td><td class="nai">くださらない</td><td>給（尊敬語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>参る</td><td>まいる</td><td class="masu">参ります</td><td class="te">参って</td><td class="nai">参らない</td><td>去/來（謙讓語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>おる</td><td>おる</td><td class="masu">おります</td><td class="te">おって</td><td class="nai">おらない</td><td>在（謙讓語）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 二類動詞 ===== -->
+  <div class="group group2">
+    <div class="group-header">二類動詞（一段動詞）<span class="badge">Group II</span></div>
+    <table>
+      <thead><tr><th>冊</th><th>原形（辞書形）</th><th>讀音</th><th>ます形</th><th>て形</th><th>ない形</th><th>中文</th></tr></thead>
+      <tbody>
+        <!-- 初級 I -->
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>あげる</td><td>あげる</td><td class="masu">あげます</td><td class="te">あげて</td><td class="nai">あげない</td><td>給</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>浴びる</td><td>あびる</td><td class="masu">浴びます</td><td class="te">浴びて</td><td class="nai">浴びない</td><td>淋浴</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>いる</td><td>いる</td><td class="masu">います</td><td class="te">いて</td><td class="nai">いない</td><td>有（人/動物）、在</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>入れる</td><td>いれる</td><td class="masu">入れます</td><td class="te">入れて</td><td class="nai">入れない</td><td>放入</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>生まれる</td><td>うまれる</td><td class="masu">生まれます</td><td class="te">生まれて</td><td class="nai">生まれない</td><td>出生</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>起きる</td><td>おきる</td><td class="masu">起きます</td><td class="te">起きて</td><td class="nai">起きない</td><td>起床</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>教える</td><td>おしえる</td><td class="masu">教えます</td><td class="te">教えて</td><td class="nai">教えない</td><td>教</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>覚える</td><td>おぼえる</td><td class="masu">覚えます</td><td class="te">覚えて</td><td class="nai">覚えない</td><td>記住</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>降りる</td><td>おりる</td><td class="masu">降ります</td><td class="te">降りて</td><td class="nai">降りない</td><td>下車</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>かける</td><td>かける</td><td class="masu">かけます</td><td class="te">かけて</td><td class="nai">かけない</td><td>打（電話）、戴（眼鏡）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>借りる</td><td>かりる</td><td class="masu">借ります</td><td class="te">借りて</td><td class="nai">借りない</td><td>借入</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>考える</td><td>かんがえる</td><td class="masu">考えます</td><td class="te">考えて</td><td class="nai">考えない</td><td>思考</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>着る</td><td>きる</td><td class="masu">着ます</td><td class="te">着て</td><td class="nai">着ない</td><td>穿（上衣）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>くれる</td><td>くれる</td><td class="masu">くれます</td><td class="te">くれて</td><td class="nai">くれない</td><td>給（我）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>閉める</td><td>しめる</td><td class="masu">閉めます</td><td class="te">閉めて</td><td class="nai">閉めない</td><td>關閉</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>食べる</td><td>たべる</td><td class="masu">食べます</td><td class="te">食べて</td><td class="nai">食べない</td><td>吃</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>足りる</td><td>たりる</td><td class="masu">足ります</td><td class="te">足りて</td><td class="nai">足りない</td><td>足夠</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>つける</td><td>つける</td><td class="masu">つけます</td><td class="te">つけて</td><td class="nai">つけない</td><td>開（燈）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>出かける</td><td>でかける</td><td class="masu">出かけます</td><td class="te">出かけて</td><td class="nai">出かけない</td><td>出門</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>できる</td><td>できる</td><td class="masu">できます</td><td class="te">できて</td><td class="nai">できない</td><td>能夠、會</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>出る</td><td>でる</td><td class="masu">出ます</td><td class="te">出て</td><td class="nai">出ない</td><td>出去</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>寝る</td><td>ねる</td><td class="masu">寝ます</td><td class="te">寝て</td><td class="nai">寝ない</td><td>睡覺</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>乗り換える</td><td>のりかえる</td><td class="masu">乗り換えます</td><td class="te">乗り換えて</td><td class="nai">乗り換えない</td><td>轉車</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>始める</td><td>はじめる</td><td class="masu">始めます</td><td class="te">始めて</td><td class="nai">始めない</td><td>開始（他動）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>見せる</td><td>みせる</td><td class="masu">見せます</td><td class="te">見せて</td><td class="nai">見せない</td><td>給...看</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>見る</td><td>みる</td><td class="masu">見ます</td><td class="te">見て</td><td class="nai">見ない</td><td>看</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>迎える</td><td>むかえる</td><td class="masu">迎えます</td><td class="te">迎えて</td><td class="nai">迎えない</td><td>迎接</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>開ける</td><td>あける</td><td class="masu">開けます</td><td class="te">開けて</td><td class="nai">開けない</td><td>打開</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>止める</td><td>とめる</td><td class="masu">止めます</td><td class="te">止めて</td><td class="nai">止めない</td><td>停止（他動）</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>忘れる</td><td>わすれる</td><td class="masu">忘れます</td><td class="te">忘れて</td><td class="nai">忘れない</td><td>忘記</td></tr>
+        <!-- 初級 II -->
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>診る</td><td>みる</td><td class="masu">診ます</td><td class="te">診て</td><td class="nai">診ない</td><td>看診、診察</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>生きる</td><td>いきる</td><td class="masu">生きます</td><td class="te">生きて</td><td class="nai">生きない</td><td>活、生存</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>遅れる</td><td>おくれる</td><td class="masu">遅れます</td><td class="te">遅れて</td><td class="nai">遅れない</td><td>遲到</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>届ける</td><td>とどける</td><td class="masu">届けます</td><td class="te">届けて</td><td class="nai">届けない</td><td>送交</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>取り替える</td><td>とりかえる</td><td class="masu">取り替えます</td><td class="te">取り替えて</td><td class="nai">取り替えない</td><td>更換</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>片付ける</td><td>かたづける</td><td class="masu">片付けます</td><td class="te">片付けて</td><td class="nai">片付けない</td><td>整理、收拾</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>建てる</td><td>たてる</td><td class="masu">建てます</td><td class="te">建てて</td><td class="nai">建てない</td><td>建造</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>集める</td><td>あつめる</td><td class="masu">集めます</td><td class="te">集めて</td><td class="nai">集めない</td><td>收集</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>捨てる</td><td>すてる</td><td class="masu">捨てます</td><td class="te">捨てて</td><td class="nai">捨てない</td><td>丟棄</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>換える</td><td>かえる</td><td class="masu">換えます</td><td class="te">換えて</td><td class="nai">換えない</td><td>交換</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>落ちる</td><td>おちる</td><td class="masu">落ちます</td><td class="te">落ちて</td><td class="nai">落ちない</td><td>掉落</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>消える</td><td>きえる</td><td class="masu">消えます</td><td class="te">消えて</td><td class="nai">消えない</td><td>消失、（燈）滅</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>壊れる</td><td>こわれる</td><td class="masu">壊れます</td><td class="te">壊れて</td><td class="nai">壊れない</td><td>壞掉（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>割れる</td><td>われる</td><td class="masu">割れます</td><td class="te">割れて</td><td class="nai">割れない</td><td>破裂</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>折れる</td><td>おれる</td><td class="masu">折れます</td><td class="te">折れて</td><td class="nai">折れない</td><td>折斷（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>外れる</td><td>はずれる</td><td class="masu">外れます</td><td class="te">外れて</td><td class="nai">外れない</td><td>脫落</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>汚れる</td><td>よごれる</td><td class="masu">汚れます</td><td class="te">汚れて</td><td class="nai">汚れない</td><td>變髒</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>破れる</td><td>やぶれる</td><td class="masu">破れます</td><td class="te">破れて</td><td class="nai">破れない</td><td>破掉</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>見つける</td><td>みつける</td><td class="masu">見つけます</td><td class="te">見つけて</td><td class="nai">見つけない</td><td>找到</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>並べる</td><td>ならべる</td><td class="masu">並べます</td><td class="te">並べて</td><td class="nai">並べない</td><td>排列</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>植える</td><td>うえる</td><td class="masu">植えます</td><td class="te">植えて</td><td class="nai">植えない</td><td>種植</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>掛ける</td><td>かける</td><td class="masu">掛けます</td><td class="te">掛けて</td><td class="nai">掛けない</td><td>掛</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>続ける</td><td>つづける</td><td class="masu">続けます</td><td class="te">続けて</td><td class="nai">続けない</td><td>繼續</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>受ける</td><td>うける</td><td class="masu">受けます</td><td class="te">受けて</td><td class="nai">受けない</td><td>接受、考（試）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>痩せる</td><td>やせる</td><td class="masu">痩せます</td><td class="te">痩せて</td><td class="nai">痩せない</td><td>變瘦</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>逃げる</td><td>にげる</td><td class="masu">逃げます</td><td class="te">逃げて</td><td class="nai">逃げない</td><td>逃跑</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>組み立てる</td><td>くみたてる</td><td class="masu">組み立てます</td><td class="te">組み立てて</td><td class="nai">組み立てない</td><td>組裝</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>気をつける</td><td>きをつける</td><td class="masu">気をつけます</td><td class="te">気をつけて</td><td class="nai">気をつけない</td><td>注意、小心</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>焼ける</td><td>やける</td><td class="masu">焼けます</td><td class="te">焼けて</td><td class="nai">焼けない</td><td>烤好（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>慣れる</td><td>なれる</td><td class="masu">慣れます</td><td class="te">慣れて</td><td class="nai">慣れない</td><td>習慣</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>褒める</td><td>ほめる</td><td class="masu">褒めます</td><td class="te">褒めて</td><td class="nai">褒めない</td><td>稱讚</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>数える</td><td>かぞえる</td><td class="masu">数えます</td><td class="te">数えて</td><td class="nai">数えない</td><td>數、計算</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>確かめる</td><td>たしかめる</td><td class="masu">確かめます</td><td class="te">確かめて</td><td class="nai">確かめない</td><td>確認</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>揺れる</td><td>ゆれる</td><td class="masu">揺れます</td><td class="te">揺れて</td><td class="nai">揺れない</td><td>搖晃</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>濡れる</td><td>ぬれる</td><td class="masu">濡れます</td><td class="te">濡れて</td><td class="nai">濡れない</td><td>淋濕</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>茹でる</td><td>ゆでる</td><td class="masu">茹でます</td><td class="te">茹でて</td><td class="nai">茹でない</td><td>水煮</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>漬ける</td><td>つける</td><td class="masu">漬けます</td><td class="te">漬けて</td><td class="nai">漬けない</td><td>醃漬</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>増える</td><td>ふえる</td><td class="masu">増えます</td><td class="te">増えて</td><td class="nai">増えない</td><td>增加（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>減る</td><td>へる</td><td class="masu">減ります</td><td class="te">減って</td><td class="nai">減らない</td><td>減少（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>慌てる</td><td>あわてる</td><td class="masu">慌てます</td><td class="te">慌てて</td><td class="nai">慌てない</td><td>慌張</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>間違える</td><td>まちがえる</td><td class="masu">間違えます</td><td class="te">間違えて</td><td class="nai">間違えない</td><td>搞錯</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>売れる</td><td>うれる</td><td class="masu">売れます</td><td class="te">売れて</td><td class="nai">売れない</td><td>暢銷（自動）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>負ける</td><td>まける</td><td class="masu">負けます</td><td class="te">負けて</td><td class="nai">負けない</td><td>輸</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>信じる</td><td>しんじる</td><td class="masu">信じます</td><td class="te">信じて</td><td class="nai">信じない</td><td>相信</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>育てる</td><td>そだてる</td><td class="masu">育てます</td><td class="te">育てて</td><td class="nai">育てない</td><td>培育</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>預ける</td><td>あずける</td><td class="masu">預けます</td><td class="te">預けて</td><td class="nai">預けない</td><td>寄放</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>調べる</td><td>しらべる</td><td class="masu">調べます</td><td class="te">調べて</td><td class="nai">調べない</td><td>調查</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>見える</td><td>みえる</td><td class="masu">見えます</td><td class="te">見えて</td><td class="nai">見えない</td><td>看得見</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>聞こえる</td><td>きこえる</td><td class="masu">聞こえます</td><td class="te">聞こえて</td><td class="nai">聞こえない</td><td>聽得見</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>ご覧になる</td><td>ごらんになる</td><td class="masu">ご覧になります</td><td class="te">ご覧になって</td><td class="nai">ご覧にならない</td><td>看（尊敬語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>召し上がる</td><td>めしあがる</td><td class="masu">召し上がります</td><td class="te">召し上がって</td><td class="nai">召し上がらない</td><td>吃/喝（尊敬語）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 三類動詞 ===== -->
+  <div class="group group3">
+    <div class="group-header">三類動詞（する・来る）<span class="badge">Group III</span></div>
+    <table>
+      <thead><tr><th>冊</th><th>原形（辞書形）</th><th>讀音</th><th>ます形</th><th>て形</th><th>ない形</th><th>中文</th></tr></thead>
+      <tbody>
+        <!-- 初級 I -->
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>する</td><td>する</td><td class="masu">します</td><td class="te">して</td><td class="nai">しない</td><td>做</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>来る</td><td>くる</td><td class="masu">来ます</td><td class="te">来て</td><td class="nai">来ない</td><td>來</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>勉強する</td><td>べんきょうする</td><td class="masu">勉強します</td><td class="te">勉強して</td><td class="nai">勉強しない</td><td>學習、讀書</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>買い物する</td><td>かいものする</td><td class="masu">買い物します</td><td class="te">買い物して</td><td class="nai">買い物しない</td><td>購物</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>食事する</td><td>しょくじする</td><td class="masu">食事します</td><td class="te">食事して</td><td class="nai">食事しない</td><td>用餐</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>散歩する</td><td>さんぽする</td><td class="masu">散歩します</td><td class="te">散歩して</td><td class="nai">散歩しない</td><td>散步</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>洗濯する</td><td>せんたくする</td><td class="masu">洗濯します</td><td class="te">洗濯して</td><td class="nai">洗濯しない</td><td>洗衣服</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>掃除する</td><td>そうじする</td><td class="masu">掃除します</td><td class="te">掃除して</td><td class="nai">掃除しない</td><td>打掃</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>料理する</td><td>りょうりする</td><td class="masu">料理します</td><td class="te">料理して</td><td class="nai">料理しない</td><td>做菜</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>電話する</td><td>でんわする</td><td class="masu">電話します</td><td class="te">電話して</td><td class="nai">電話しない</td><td>打電話</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>残業する</td><td>ざんぎょうする</td><td class="masu">残業します</td><td class="te">残業して</td><td class="nai">残業しない</td><td>加班</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>出張する</td><td>しゅっちょうする</td><td class="masu">出張します</td><td class="te">出張して</td><td class="nai">出張しない</td><td>出差</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>旅行する</td><td>りょこうする</td><td class="masu">旅行します</td><td class="te">旅行して</td><td class="nai">旅行しない</td><td>旅行</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>練習する</td><td>れんしゅうする</td><td class="masu">練習します</td><td class="te">練習して</td><td class="nai">練習しない</td><td>練習</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>紹介する</td><td>しょうかいする</td><td class="masu">紹介します</td><td class="te">紹介して</td><td class="nai">紹介しない</td><td>介紹</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>結婚する</td><td>けっこんする</td><td class="masu">結婚します</td><td class="te">結婚して</td><td class="nai">結婚しない</td><td>結婚</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>心配する</td><td>しんぱいする</td><td class="masu">心配します</td><td class="te">心配して</td><td class="nai">心配しない</td><td>擔心</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>転勤する</td><td>てんきんする</td><td class="masu">転勤します</td><td class="te">転勤して</td><td class="nai">転勤しない</td><td>調職</td></tr>
+        <tr data-book="1"><td><span class="book b1">I</span></td><td>コピーする</td><td>コピーする</td><td class="masu">コピーします</td><td class="te">コピーして</td><td class="nai">コピーしない</td><td>影印</td></tr>
+        <!-- 初級 II -->
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>連絡する</td><td>れんらくする</td><td class="masu">連絡します</td><td class="te">連絡して</td><td class="nai">連絡しない</td><td>聯絡</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>運転する</td><td>うんてんする</td><td class="masu">運転します</td><td class="te">運転して</td><td class="nai">運転しない</td><td>開車</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>予約する</td><td>よやくする</td><td class="masu">予約します</td><td class="te">予約して</td><td class="nai">予約しない</td><td>預約</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>入学する</td><td>にゅうがくする</td><td class="masu">入学します</td><td class="te">入学して</td><td class="nai">入学しない</td><td>入學</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>卒業する</td><td>そつぎょうする</td><td class="masu">卒業します</td><td class="te">卒業して</td><td class="nai">卒業しない</td><td>畢業</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>貯金する</td><td>ちょきんする</td><td class="masu">貯金します</td><td class="te">貯金して</td><td class="nai">貯金しない</td><td>存錢</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>運動する</td><td>うんどうする</td><td class="masu">運動します</td><td class="te">運動して</td><td class="nai">運動しない</td><td>運動</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>見学する</td><td>けんがくする</td><td class="masu">見学します</td><td class="te">見学して</td><td class="nai">見学しない</td><td>參觀</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>翻訳する</td><td>ほんやくする</td><td class="masu">翻訳します</td><td class="te">翻訳して</td><td class="nai">翻訳しない</td><td>翻譯</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>発明する</td><td>はつめいする</td><td class="masu">発明します</td><td class="te">発明して</td><td class="nai">発明しない</td><td>發明</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>発見する</td><td>はっけんする</td><td class="masu">発見します</td><td class="te">発見して</td><td class="nai">発見しない</td><td>發現</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>輸出する</td><td>ゆしゅつする</td><td class="masu">輸出します</td><td class="te">輸出して</td><td class="nai">輸出しない</td><td>出口</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>輸入する</td><td>ゆにゅうする</td><td class="masu">輸入します</td><td class="te">輸入して</td><td class="nai">輸入しない</td><td>進口</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>留学する</td><td>りゅうがくする</td><td class="masu">留学します</td><td class="te">留学して</td><td class="nai">留学しない</td><td>留學</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>相談する</td><td>そうだんする</td><td class="masu">相談します</td><td class="te">相談して</td><td class="nai">相談しない</td><td>商量</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>優勝する</td><td>ゆうしょうする</td><td class="masu">優勝します</td><td class="te">優勝して</td><td class="nai">優勝しない</td><td>獲勝</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>挨拶する</td><td>あいさつする</td><td class="masu">挨拶します</td><td class="te">挨拶して</td><td class="nai">挨拶しない</td><td>打招呼</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>けがをする</td><td>けがをする</td><td class="masu">けがをします</td><td class="te">けがをして</td><td class="nai">けがをしない</td><td>受傷</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>やけどをする</td><td>やけどをする</td><td class="masu">やけどをします</td><td class="te">やけどをして</td><td class="nai">やけどをしない</td><td>燙傷</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>寄付する</td><td>きふする</td><td class="masu">寄付します</td><td class="te">寄付して</td><td class="nai">寄付しない</td><td>捐獻</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>なさる</td><td>なさる</td><td class="masu">なさいます</td><td class="te">なさって</td><td class="nai">なさらない</td><td>做（尊敬語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>申す</td><td>もうす</td><td class="masu">申します</td><td class="te">申して</td><td class="nai">申さない</td><td>說（謙讓語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>いたす</td><td>いたす</td><td class="masu">いたします</td><td class="te">いたして</td><td class="nai">いたさない</td><td>做（謙讓語）</td></tr>
+        <tr data-book="2"><td><span class="book b2">II</span></td><td>拝見する</td><td>はいけんする</td><td class="masu">拝見します</td><td class="te">拝見して</td><td class="nai">拝見しない</td><td>看（謙讓語）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ===== 音便規則 ===== -->
+  <div class="rule-box">
+    <h2>一類動詞 て形 音便規則速記</h2>
+    <table>
+      <thead><tr><th>原形結尾</th><th>て形變化</th><th>範例</th><th>口訣</th></tr></thead>
+      <tbody>
+        <tr><td>～す</td><td>→ して</td><td>探す → 探して</td><td>す → して</td></tr>
+        <tr><td>～く</td><td>→ いて</td><td>書く → 書いて</td><td rowspan="2">き・ぎ 換 い</td></tr>
+        <tr><td>～ぐ</td><td>→ いで</td><td>騒ぐ → 騒いで</td></tr>
+        <tr><td>～う</td><td>→ って</td><td>買う → 買って</td><td rowspan="3">う・つ・る 促音って</td></tr>
+        <tr><td>～つ</td><td>→ って</td><td>待つ → 待って</td></tr>
+        <tr><td>～る</td><td>→ って</td><td>帰る → 帰って</td></tr>
+        <tr><td>～む</td><td>→ んで</td><td>飲む → 飲んで</td><td rowspan="3">む・ぶ・ぬ 撥音んで</td></tr>
+        <tr><td>～ぶ</td><td>→ んで</td><td>呼ぶ → 呼んで</td></tr>
+        <tr><td>～ぬ</td><td>→ んで</td><td>死ぬ → 死んで</td></tr>
+        <tr class="exception"><td>行く ＊</td><td>→ 行って</td><td>（例外：不是 ×行いて）</td><td>唯一例外！</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+const input = document.getElementById('search');
+const countEl = document.getElementById('count');
+const allRows = document.querySelectorAll('.group tbody tr');
+const tabs = document.querySelectorAll('.tabs button');
+let currentBook = 'all';
+
+// --- TTS: add speaker buttons to reading column (col index 2) ---
+let jaVoice = null;
+function loadVoice() {
+  const voices = speechSynthesis.getVoices();
+  jaVoice = voices.find(v => v.lang.startsWith('ja')) || null;
+}
+speechSynthesis.onvoiceschanged = loadVoice;
+loadVoice();
+
+function speak(text, btn) {
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP';
+  u.rate = 0.85;
+  if (jaVoice) u.voice = jaVoice;
+  btn.classList.add('playing');
+  u.onend = () => btn.classList.remove('playing');
+  u.onerror = () => btn.classList.remove('playing');
+  speechSynthesis.speak(u);
+}
+
+// inject speaker buttons into reading, masu, te, nai columns
+allRows.forEach(row => {
+  const cells = row.querySelectorAll('td');
+  if (cells.length < 6) return;
+  [2, 3, 4, 5].forEach(i => { // 讀音, ます形, て形, ない形
+    const cell = cells[i];
+    const text = cell.textContent.trim();
+    const btn = document.createElement('button');
+    btn.className = 'speak-btn';
+    btn.textContent = '\u{1F50A}';
+    btn.title = '播放發音';
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      speak(text, btn);
+    });
+    cell.appendChild(document.createTextNode(' '));
+    cell.appendChild(btn);
+  });
+});
+
+// --- Tabs ---
+tabs.forEach(btn => {
+  btn.addEventListener('click', () => {
+    tabs.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentBook = btn.dataset.filter;
+    update();
+  });
+});
+
+// --- Search + Filter ---
+function update() {
+  const q = input.value.trim().toLowerCase();
+  let shown = 0;
+  allRows.forEach(row => {
+    const text = row.textContent.toLowerCase();
+    const book = row.dataset.book;
+    const matchText = !q || text.includes(q);
+    const matchBook = currentBook === 'all' || book === currentBook;
+    const visible = matchText && matchBook;
+    row.classList.toggle('hidden', !visible);
+    if (visible) shown++;
+  });
+  const label = currentBook === 'all' ? '' : currentBook === '1' ? '（初級 I）' : '（初級 II）';
+  countEl.textContent = q ? `找到 ${shown} 個動詞 ${label}` : `共 ${shown} 個動詞 ${label}`;
+}
+
+input.addEventListener('input', update);
+update();
+</script>
+</body>
+</html>
